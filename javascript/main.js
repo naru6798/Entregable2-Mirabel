@@ -3,84 +3,84 @@ const listaProductos = [
   {
     nombre: "Alimento Premium para Perros",
     precio: 40000,
-    imagen: "imgs/alimento-perro.webp",
+    imagen: "./imgs/alimento-perro.webp",
     texto: "15 kg con ingredientes naturales y balanceados.",
     id: "perros-1"
   },
   {
     nombre: "Juguete mordedor para cachorros",
     precio: 3500,
-    imagen: "imgs/mordedor-perro.webp",
+    imagen: "./imgs/mordedor-perro.webp",
     texto: "Hecho de caucho natural, perfecto para cachorros en etapa de dentición.",
     id: "perros-2"
   },
   {
     nombre: "Correa Retráctil para Perros",
     precio: 5000,
-    imagen: "imgs/correa.png",
+    imagen: "./imgs/correa.png",
     texto: "Correa de 5 metros, ideal para paseos cómodos.",
     id: "perros-3"
   },
   {
     nombre: "Rascador para Gatos",
     precio: 7300,
-    imagen: "imgs/rascador-gato.webp",
+    imagen: "./imgs/rascador-gato.webp",
     texto: "Ideal para mantener las uñas de tu gato saludables y entretenido.",
     id: "gatos-1"
   },
   {
     nombre: "Alimento Balanceado para Gatos",
     precio: 40000,
-    imagen: "imgs/alimento-gato.jpg",
+    imagen: "./imgs/alimento-gato.jpg",
     texto: "Alimento completo para gatos de todas las edades.",
     id: "gatos-2"
   },
   {
     nombre: "Juguete de Plumas para Gatos",
     precio: 3500,
-    imagen: "imgs/pluma-gato.jpg",
+    imagen: "./imgs/pluma-gato.jpg",
     texto: "Juguete interactivo para estimular el juego de tu gato.",
     id: "gatos-3"
   },
   {
     nombre: "Rueda para Hámster",
     precio: 4200,
-    imagen: "imgs/rueda.webp",
+    imagen: "./imgs/rueda.webp",
     texto: "Rueda silenciosa para el ejercicio diario de tu roedor.",
     id: "roedores-1"
   },
   {
     nombre: "Jaula Espaciosa para Hámster",
     precio: 17000,
-    imagen: "imgs/jaula.jpg",
+    imagen: "./imgs/jaula.jpg",
     texto: "Jaula con múltiples niveles para la diversión de tu hámster.",
     id: "roedores-2"
   },
   {
     nombre: "Alimento Enriquecido para Roedores",
     precio: 4300,
-    imagen: "imgs/alimento-roedor.webp",
+    imagen: "./imgs/alimento-roedor.webp",
     texto: "Mezcla de semillas y granos para una dieta equilibrada.",
     id: "roedores-3"
   },
   {
     nombre: "Comida para Peces Tropicales",
     precio: 4500,
-    imagen: "imgs/alimento-peces.png",
+    imagen: "./imgs/alimento-peces.png",
     texto: "Mezcla nutritiva para peces de agua dulce.",
     id: "peces-1"
   },
   {
     nombre: "Acondicionador de Agua para Acuario",
     precio: 3700,
-    imagen: "imgs/acond-agua.jpg",
+    imagen: "./imgs/acond-agua.jpg",
     texto: "Elimina el cloro y crea un ambiente seguro para tus peces.",
     id: "peces-2"
   },
   {
     nombre: "Adorno de Castillo para Acuario",
     precio: 10500,
-    imagen: "imgs/castillo.webp",
+    imagen: "./imgs/castillo.webp",
     texto: "Añade un toque de fantasía a tu acuario.",
     id: "peces-3"
   }
