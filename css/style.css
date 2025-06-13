@@ -1,0 +1,260 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 20px;
+  flex: 1;
+}
+
+section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 0.75em 0;
+  background-color: #333;
+  color: #fff;
+}
+
+/* Estilo del header */
+/* Estilo del header */
+/* Estilo del header */
+/* Estilo del header */
+/* Estilo del header */
+
+header {
+  background-color: black;
+  color: #fff;
+  padding: 0.75em 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor principal del header */
+.header-container {
+  margin: 0 auto;
+  padding: 0 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Contenedor del logo + texto */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+/* Imagen del logo */
+.logo img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Texto junto al logo */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Alinea a la izquierda */
+  line-height: 1.2;
+}
+
+/* Título "PetAmigos" */
+.logo-text h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+/* Frase debajo del título */
+.logo-text p {
+  margin: 0;
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+/* Contenedor de los botones del header */
+.header-buttons {
+  display: flex;
+  gap: 1em;
+}
+
+/* Estilo de los botones */
+.btn {
+  background-color: #ff9800;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #e68900;
+}
+
+/* Estilo de las secciones principales */
+/* Estilo de las secciones principales */
+/* Estilo de las secciones principales */
+/* Estilo de las secciones principales */
+/* Estilo de las secciones principales */
+
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(25% - 10px);
+  margin: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.producto img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.producto h3 {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+.producto p {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  flex-grow: 1; 
+}
+
+.producto button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.producto button:hover {
+  background-color: #45a049;
+}
+
+.btn-eliminar {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto;
+  font-size: 0.8em;
+}
+
+.btn-eliminar:hover {
+  background-color: #d32f2f;
+}
+
+.carrito-productos {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-productos h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#carrito-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carrito-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.carrito-item-details {
+  display: flex;
+  align-items: center;
+}
+
+.carrito-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.carrito-item p {
+  margin: 0;
+}
+
+.carrito-total {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.carrito-total p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+
+
+/* Modo Oscuro */
+.dark-mode {
+  background-color: #121212;
+  color: #f4f4f4;
+}
+
+.dark-mode header {
+  background-color: black;
+  color: #fff;
+  padding: 0.75em 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode section,
+.dark-mode .carrito-productos {
+  background-color: #2c2c2c;
+  box-shadow: 0 0 10px rgba(247, 246, 246, 0.05);
+}
