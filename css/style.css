@@ -166,6 +166,11 @@ header {
   transition: background-color 0.3s ease;
 }
 
+.dark-mode .producto button {
+  background-color: black;
+  color: white;
+}
+
 .producto button:hover {
   background-color: #45a049;
 }
