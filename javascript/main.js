@@ -1,7 +1,7 @@
 // Elemento del DOM donde se mostrarán los productos
 const seccionProductos = document.getElementById("seccion-productos");
 
-const URL = "../db/data.json"; // URL del archivo JSON
+const URL = "db/data.json"; // URL del archivo JSON
 
 
 function obtenerProductos() {
