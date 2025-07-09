@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <title>Tienda de Mascotas - Chimuelo</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Animate -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <body>
 
@@ -17,20 +23,28 @@
       </div>
     </div>
     <div class="header-buttons">
-      <a href="html/carrito.html" class="btn">🛒 Carrito</a>
-<button class="btn" id="darkModeToggle">🌙 Modo Oscuro</button>
+      <a href="html/carrito.html" class="btn" id="btn-carrito">
+        🛒 Carrito <span id="carrito-cantidad" class="carrito-cantidad">(0)</span>
+      </a>
+
     </div>
   </div>
 </header>
 
 <main>
-  <section id="seccion-productos" class="productos"></section>
+  <section id="seccion-productos" class="productos">
+    <!-- Productos se mostrarán aquí -->
+  </section>
 </main>
 
 <footer>
-    <p>&copy; 2025 PetAmigos. Todos los derechos reservados.</p>
+    <p>&copy; 2025 PetShop. Todos los derechos reservados.</p>
 </footer>
 
 <script src="./javascript/main.js"></script>
+
+<!-- SweetAlert -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

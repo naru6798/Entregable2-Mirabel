@@ -1,93 +1,22 @@
-// Lista de productos
-const listaProductos = [
-  {
-    nombre: "Alimento Premium para Perros",
-    precio: 40000,
-    imagen: "imgs/alimento-perro.webp",
-    texto: "15 kg con ingredientes naturales y balanceados.",
-    id: "perros-1"
-  },
-  {
-    nombre: "Juguete mordedor para cachorros",
-    precio: 3500,
-    imagen: "imgs/mordedor-perro.webp",
-    texto: "Hecho de caucho natural, perfecto para cachorros en etapa de dentición.",
-    id: "perros-2"
-  },
-  {
-    nombre: "Correa Retráctil para Perros",
-    precio: 5000,
-    imagen: "imgs/correa.png",
-    texto: "Correa de 5 metros, ideal para paseos cómodos.",
-    id: "perros-3"
-  },
-  {
-    nombre: "Rascador para Gatos",
-    precio: 7300,
-    imagen: "imgs/rascador-gato.webp",
-    texto: "Ideal para mantener las uñas de tu gato saludables y entretenido.",
-    id: "gatos-1"
-  },
-  {
-    nombre: "Alimento Balanceado para Gatos",
-    precio: 40000,
-    imagen: "imgs/alimento-gato.jpg",
-    texto: "Alimento completo para gatos de todas las edades.",
-    id: "gatos-2"
-  },
-  {
-    nombre: "Juguete de Plumas para Gatos",
-    precio: 3500,
-    imagen: "imgs/pluma-gato.jpg",
-    texto: "Juguete interactivo para estimular el juego de tu gato.",
-    id: "gatos-3"
-  },
-  {
-    nombre: "Rueda para Hámster",
-    precio: 4200,
-    imagen: "imgs/rueda.webp",
-    texto: "Rueda silenciosa para el ejercicio diario de tu roedor.",
-    id: "roedores-1"
-  },
-  {
-    nombre: "Jaula Espaciosa para Hámster",
-    precio: 17000,
-    imagen: "imgs/jaula.jpg",
-    texto: "Jaula con múltiples niveles para la diversión de tu hámster.",
-    id: "roedores-2"
-  },
-  {
-    nombre: "Alimento Enriquecido para Roedores",
-    precio: 4300,
-    imagen: "imgs/alimento-roedor.webp",
-    texto: "Mezcla de semillas y granos para una dieta equilibrada.",
-    id: "roedores-3"
-  },
-  {
-    nombre: "Comida para Peces Tropicales",
-    precio: 4500,
-    imagen: "imgs/alimento-peces.png",
-    texto: "Mezcla nutritiva para peces de agua dulce.",
-    id: "peces-1"
-  },
-  {
-    nombre: "Acondicionador de Agua para Acuario",
-    precio: 3700,
-    imagen: "imgs/acond-agua.jpg",
-    texto: "Elimina el cloro y crea un ambiente seguro para tus peces.",
-    id: "peces-2"
-  },
-  {
-    nombre: "Adorno de Castillo para Acuario",
-    precio: 10500,
-    imagen: "imgs/castillo.webp",
-    texto: "Añade un toque de fantasía a tu acuario.",
-    id: "peces-3"
-  }
-];
-
 // Elemento del DOM donde se mostrarán los productos
 const seccionProductos = document.getElementById("seccion-productos");
+
+const URL = "../db/data.json"; // URL del archivo JSON
+
+
+function obtenerProductos() {
+  fetch(URL)
+    .then((response) => response.json())
+    .then((data) => {
+      listaProductos = data; // Guardar los productos en una variable global
+      renderizarTodosLosProductos(listaProductos);
+    })
+}
+
+// Lista de productos
+if (document.getElementById("seccion-productos")) {
+obtenerProductos();
+}
 
 // Carrito de compras
 let carrito = [];
@@ -109,75 +38,204 @@ function agregarAlCarrito(idProducto) {
   const producto = listaProductos.find(producto => producto.id === idProducto);
 
   if (producto) {
-    carrito.push(producto);
+    const productoEnCarrito = carrito.find(item => item.id === producto.id);
+    if (productoEnCarrito) {
+      productoEnCarrito.cantidad++; // cambio aquí, más claro y simple
+    } else {
+      carrito.push({ ...producto, cantidad: 1 });
+    }
     guardarCarrito();
-    alert(`${producto.nombre} agregado al carrito!`);
+    actualizarCantidadCarrito()
+    Swal.fire({
+    title: "Agregado al carrito con éxito!",
+    icon: "success",
+    draggable: true,
+    showClass: {
+      popup: `
+        animate__animated
+        animate__pulse
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__zoomOut
+          `
+        },
+
+    });
   }
 }
 
-// Función para renderizar productos de una categoría
-function renderizarProductos(categoria) {
-  return;
-}
-
 // Función para renderizar todos los productos
-function renderizarTodosLosProductos() {
-  seccionProductos.innerHTML = "";
+function renderizarTodosLosProductos(listaProductos) {
+  seccionProductos.innerHTML = ""; // Limpiar la sección antes de renderizar
   listaProductos.forEach(producto => {
-    seccionProductos.innerHTML += `
-      <div class="producto">
-        <h3>${producto.nombre}</h3>
-        <img src="${producto.imagen}" alt="${producto.nombre}">
-        <p>${producto.texto}</p>
-        <p>Precio: $${producto.precio}</p>
-        <button class="btn-comprar" data-id="${producto.id}">Comprar</button>
-      </div>
-    `;
+    const card = document.createElement("div");
+    card.classList.add("producto");
+
+    card.innerHTML = `
+      <h3>${producto.nombre}</h3>
+      <img src="${producto.imagen}" alt="${producto.nombre}">
+      <p>${producto.texto}</p>
+      <p>Precio: $${producto.precio}</p>
+      <button class="btn-comprar" data-id="${producto.id}">Comprar</button>
+      `;
+      seccionProductos.appendChild(card);
   });
 
-  // Agregar evento a los botones de comprar
+
   document.querySelectorAll(".btn-comprar").forEach(boton => {
     boton.addEventListener("click", () => {
       const idProducto = boton.getAttribute("data-id");
       agregarAlCarrito(idProducto);
     });
   });
+
 }
 
-// Función para renderizar los items del carrito en carrito.html
+// Función para remover un producto o unidad del carrito
 function removerDelCarrito(idProducto) {
-  carrito = carrito.filter(producto => {
-    console.log("idProducto:", idProducto, "producto.id:", producto.id);
-    return String(producto.id) !== String(idProducto);
-  });
-  guardarCarrito();
-  renderizarCarrito();
+  const producto = carrito.find(producto => producto.id === idProducto);
+
+  if (producto) {
+    Swal.fire({
+      title: `¿Seguro que quieres eliminar ${producto.cantidad} unidad/es de "${producto.nombre}"?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, eliminar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6", 
+      showClass: {
+          popup: `
+            animate__animated
+            animate__rubberBand
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__zoomOut
+          `
+        }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        carrito = carrito.filter(item => item.id !== idProducto);
+        guardarCarrito();
+        actualizarCantidadCarrito();
+        renderizarCarrito();
+
+        Swal.fire({
+          title: "Eliminado exitosamente!", 
+          icon: "success",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__zoomIn
+            `
+          },
+            hideClass: {
+              popup: `
+                animate__animated
+                animate__zoomOut
+              `
+            }
+      });
+        
+      } else if (result.isDenied) {
+        Swal.fire({
+          title: "Cancelado", 
+          icon: "info",
+          showClass: {
+          popup: `
+            animate__animated
+            animate__flipInY
+          `
+        },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__zoomOut
+            `
+          }
+        });
+      }
+    });
+
+  }
 }
 
+// Función para renderizar el carrito en carrito.html
 function renderizarCarrito() {
   const carritoItemsContainer = document.getElementById("carrito-items");
+  if (!carritoItemsContainer) return; // evitar error si no existe el contenedor
+
   carritoItemsContainer.innerHTML = "";
 
   carrito.forEach(producto => {
     carritoItemsContainer.innerHTML += `
       <div class="carrito-item">
         <div class="carrito-item-details">
-          <img src="${producto.imagen}" alt="${producto.nombre}">
-          <div><p>${producto.nombre}</p></div>
-          <p>Precio: $${producto.precio}</p>
+          <img src="../${producto.imagen}" alt="${producto.nombre}">
+          <div>
+            <p>${producto.nombre}</p>
+            <br>
+            <p>Cantidad: ${producto.cantidad}</p>
+            <button class="btn-decrementar" data-id="${producto.id}">-</button>
+            <button class="btn-incrementar" data-id="${producto.id}">+</button>
+            <br>
+            <br>
+            <p>Subtotal: $${producto.precio * producto.cantidad}</p>
+          </div>
+          <br>
         </div>
         <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
       </div>
     `;
   });
 
-  let total = 0;
-  carrito.forEach(producto => {
-    total += producto.precio;
+    // Eventos para incrementar cantidad
+  document.querySelectorAll(".btn-incrementar").forEach(boton => {
+    boton.addEventListener("click", () => {
+      const idProducto = boton.getAttribute("data-id");
+      const producto = carrito.find(producto => producto.id === idProducto);
+      if (producto) {
+        producto.cantidad++;
+        guardarCarrito();
+        actualizarCantidadCarrito();
+        renderizarCarrito();
+      }
+    });
   });
 
-  document.querySelector(".carrito-total p").textContent = `Total: $${total}`;
+    // Eventos para decrementar cantidad
+  document.querySelectorAll(".btn-decrementar").forEach(boton => {
+    boton.addEventListener("click", () => {
+      const idProducto = boton.getAttribute("data-id");
+      const producto = carrito.find(producto => producto.id === idProducto);
+      if (producto) {
+        producto.cantidad--;
+        if (producto.cantidad === 0) {
+          carrito = carrito.filter(producto => producto.id !== idProducto);
+        }
+        guardarCarrito();
+        actualizarCantidadCarrito();
+        renderizarCarrito();
+      }
+    });
+  });
 
+    // Calcular total usando reduce
+  const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+
+  // Actualizar el texto del total
+  const totalElemento = document.querySelector(".carrito-total");
+  if (totalElemento) {
+    totalElemento.textContent = `Total: $${total}`;
+  }
+
+  // Evento para eliminar producto completo del carrito
   document.querySelectorAll(".btn-eliminar").forEach(boton => {
     boton.addEventListener("click", () => {
       const idProducto = boton.getAttribute("data-id");
@@ -186,27 +244,23 @@ function renderizarCarrito() {
   });
 }
 
+
 // Cargar carrito al cargar la página
 cargarCarrito();
+actualizarCantidadCarrito();
+renderizarCarrito();
 
 
-// Detectar si estamos en carrito.html
-if (window.location.pathname.includes("carrito.html")) {
-  renderizarCarrito();
-} else {
-  // Renderizar todos los productos al cargar la página
-  renderizarTodosLosProductos();
+console.log("Contenido del carrito:", carrito);
+
+// Actualiza la cantidad total visible en el botón carrito
+function actualizarCantidadCarrito() {
+  const carritoCantidadSpan = document.getElementById('carrito-cantidad');
+  if (!carritoCantidadSpan) return;
+
+  // suma la cantidad de todos los productos
+  const totalCantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
+  carritoCantidadSpan.textContent = `(${totalCantidad})`;
 }
 
-// Dark mode toggle
-const darkModeToggle = document.getElementById("darkModeToggle");
-const body = document.body;
-
-darkModeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-  if (body.classList.contains("dark-mode")) {
-    darkModeToggle.textContent = "☀️ Modo Claro";
-  } else {
-    darkModeToggle.textContent = "🌙 Modo Oscuro";
-  }
-});

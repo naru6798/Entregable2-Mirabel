@@ -2,43 +2,56 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrito de Compras - Chimuelo</title>
   <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Animate -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <body>
 
-<header>
-  <div class="header-container">
-    <div class="logo">
-      <img src="../imgs/LOGO.png" alt="logo">
-      <div class="logo-text">
-        <h1>PetShop Chimuelo</h1>
-        <p>Tu carrito de compras</p>
+  <header class="cart-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../imgs/LOGO.png" alt="logo">
+        </a>
+        <div class="logo-text">
+          <h1>PetShop Chimuelo</h1>
+          <p>Tu carrito de compras</p>
+        </div>
+      </div>
+      <div class="header-buttons">
+        <a href="../index.html" class="btn">Volver a la tienda</a>
       </div>
     </div>
-    <div class="header-buttons">
-      <a href="../index.html" class="btn">Volver a la tienda</a>
-    </div>
-  </div>
-</header>
+  </header>
 
-  <main>
-    <section class="carrito-productos">
-      <h2>Productos en tu carrito</h2>
-      <div id="carrito-items">
+  <main class="cart-main">
+    <section class="cart-section">
+      <h2 class="cart-title">Productos en tu carrito</h2>
+      <div id="carrito-items" class="cart-items">
         <!-- Aquí se mostrarán los productos del carrito -->
       </div>
-      <div class="carrito-total">
-        <p>Total: $0</p>
-        <button class="btn">Finalizar Compra</button>
+      <div class="cart-summary">
+        <p class="carrito-total">Total: $0</p>
+        <a href="formulario.html" class="cart-checkout-btn btn">Realizar Compra</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 PetAmigos. Todos los derechos reservados.</p>
+  <footer class="cart-footer">
+    <p>&copy; 2025 PetShop. Todos los derechos reservados.</p>
   </footer>
 
-<script src="../javascript/main.js"></script>
+  <script src="../javascript/main.js"></script>
+
+  <!-- SweetAlert -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>
