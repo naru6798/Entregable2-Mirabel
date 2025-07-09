@@ -34,25 +34,6 @@ Incluye validación de formulario y mensajes interactivos con SweetAlert.
 
 ---
 
-## Estructura del proyecto
-
-ProyectoFinalMirabel/
-│
-├── index.html # Página principal con listado de productos
-├── html/
-│ ├── carrito.html # Página del carrito de compras
-│ └── formulario.html # Página del formulario para finalizar compra
-├── css/
-│ └── style.css # Estilos generales y específicos
-├── javascript/
-│ ├── main.js # Lógica principal de la tienda y carrito
-│ └── formulario.js # Validación y lógica del formulario
-├── db/
-│ └── data.json # Datos JSON con productos
-└── imgs/ # Imágenes usadas en el proyecto
-
----
-
 ## Cómo usar
 
 1. Abrir `index.html` en el navegador.  
